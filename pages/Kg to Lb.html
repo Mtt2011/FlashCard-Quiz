@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kg to Lb Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="../media/WinMyat.png">
+    <style>
+        body {
+            background: linear-gradient(135deg, #F9F5FF 0%, #C9C1FF 100%);
+            padding-left: 2rem;
+            padding-right: 2rem;
+            color: #4B4453;
+            height: 96vh;
+        }
+
+        .headbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4E5E88;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: rgba(112, 145, 230, 0.5);
+            color: white;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #EDE8F5;
+        }
+
+        #Kg,
+        #Lb {
+            border-radius: 1rem;
+            height: 8vh;
+            border: 1px solid black;
+            margin-top: 1rem !important;
+            background-color: #F0EFFF;
+            transition-duration: 0.5s;
+            width: 30vw;
+            padding-left: 1rem;
+        }
+
+        #Kg:hover,
+        #Lb:hover {
+            scale: 1.05;
+            transform-origin: center;
+            transition-duration: 0.5s;
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        button{
+            margin-top: 1rem !important;
+            height: 8vh;
+            background-color: #7091E6 !important;
+            border-radius: 1rem !important;
+            transition-duration: 0.5s;
+        }
+
+        button:hover{
+            background-color: #5774C8 !important;
+            transition-duration: 0.5s;
+        }
+
+        .nav-link {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 2rem;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            box-shadow: 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-link:hover {
+            background-color: #34495e;
+            transform: scale(1.03);
+            box-shadow: 10px rgba(0, 0, 0, 0.2)
+        }
+    </style>
+</head>
+
+<body>
+
+   <div class="headbar mt-3">
+        <div class="logo">Weight <span>Converter</span></div>
+        <div class="menu">
+            <ul class="navbar">
+                <li class="nav-item"><a href="C to F.html" class="nav-link">Temperature Converter</a></li>
+                <li class="nav-item ms-3"><a href="Meter to Feet.html" class="nav-link">Meter to Feet</a></li>
+                <li class="nav-item ms-3"><a href="../index.html" class="nav-link">FlashCard Quiz</a></li>
+                <li class="nav-item ms-3"><a href="MatchingQuiz.html" class="nav-link">Matching Quiz</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <h1 class="text-center mt-3">Weight Converter</h1>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <input type="text" class="mt-3" id="Kg" placeholder="Kg" />
+                </div>
+                <div class="col-12">
+                    <input type="text" class="mt-3" id="Lb" placeholder="Lb" />
+                </div>
+                <div class="col-3 mt-3">
+                    <button class="btn text-light" onclick="length()">Convert</button>
+                </div>
+                <div class="col-3 mt-3">
+                    <button class="btn text-light" onclick="reset()">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function length() {
+            var kg = document.getElementById("Kg").value;
+            var lb = document.getElementById("Lb").value;
+
+            kg == '' ? kg = parseFloat(lb) / 2.20462 : lb = parseFloat(kg) * 2.20462;
+
+            document.getElementById("Kg").value = parseFloat(kg);
+            document.getElementById("Lb").value = parseFloat(lb).toFixed(2);
+        }
+
+        function reset() {
+            document.getElementById("Kg").value = "";
+            document.getElementById("Lb").value = "";
+        }
+    </script>
+
+</body>
+
+</html>

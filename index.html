@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashCard-Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="media/WinMyat.png">
+</head>
+
+
+<body>
+    <div class="headbar mt-3">
+        <div class="logo">FlashCard <span>Quiz</span></div>
+        <div class="menu">
+            <ul class="navbar">
+                <li class="nav-item"><a href="pages/C to F.html" class="nav-link">Temperature Converter</a></li>
+                <li class="nav-item ms-3"><a href="pages/Meter to Feet.html" class="nav-link">Meter to Feet</a></li>
+                <li class="nav-item ms-3"><a href="pages/Kg to Lb.html" class="nav-link">Kg to Lb</a></li>
+                <li class="nav-item ms-3"><a href="pages/MatchingQuiz.html" class="nav-link">Matching Quiz!</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-evenly mt-5">
+        <input type="text" placeholder="Question 1" class="col-6" id="questionOne"> 
+        <input type="text" placeholder="Answer to question 1" class="col-3" id="answerOne">
+        <button class="btn btn-primary col-2" onclick="addQuestionOne()">Add</button>
+    </div>
+
+    <div class="row d-flex justify-content-evenly mt-3">
+        <input type="text" placeholder="Question 2" class="col-6" id="questionTwo">
+        <input type="text" placeholder="Answer to question 2" class="col-3" id="answerTwo">
+        <button class="btn btn-primary col-2" onclick="addQuestionTwo()">Add</button>
+    </div>
+
+    <div class="row d-flex justify-content-evenly mt-3">
+        <input type="text" placeholder="Question 3" class="col-6" id="questionThree">
+        <input type="text" placeholder="Answer to question 3" class="col-3" id="answerThree">
+        <button class="btn btn-primary col-2" onclick="addQuestionThree()">Add</button>
+    </div>
+
+    <div class="row d-flex justify-content-evenly mt-3">
+        <input type="text" placeholder="Question 4" class="col-6" id="questionFour">
+        <input type="text" placeholder="Answer to question 4" class="col-3" id="answerFour">
+        <button class="btn btn-primary col-2" onclick="addQuestionFour()">Add</button>
+    </div>
+
+    <div class="row d-flex justify-content-evenly mt-3">
+        <input type="text" placeholder="Question 5" class="col-6" id="questionFive">
+        <input type="text" placeholder="Answer to question 5" class="col-3" id="answerFive">
+        <button class="btn btn-primary col-2" onclick="addQuestionFive()">Add</button>
+    </div>
+
+    <div class="row d-flex justify-content-evenly mt-3">
+        <input type="text" placeholder="Question 6" class="col-6" id="questionSix">
+        <input type="text" placeholder="Answer to question 6" class="col-3" id="answerSix">
+        <button class="btn btn-primary col-2" onclick="addQuestionSix()">Add</button>
+    </div>
+
+    <div class="row cards">
+        <div class="col-5" onmouseenter="displayAnswerOne()" onmouseleave="closeAnswerOne()">
+            <p id="displayOne"></p>
+        </div>
+        <div class="col-5" onmouseenter="displayAnswerTwo()" onmouseleave="closeAnswerTwo()">
+            <p id="displayTwo"></p>
+        </div>
+    </div>
+
+    <div class="row cards">
+        <div class="col-5" onmouseenter="displayAnswerThree()" onmouseleave="closeAnswerThree()">
+            <p id="displayThree"></p>
+        </div>
+        <div class="col-5" onmouseenter="displayAnswerFour()" onmouseleave="closeAnswerFour()">
+            <p id="displayFour"></p>
+        </div>
+    </div>
+
+    <div class="row cards mb-5">
+        <div class="col-5" onmouseenter="displayAnswerFive()" onmouseleave="closeAnswerFive()">
+            <p id="displayFive"></p>
+        </div>
+        <div class="col-5" onmouseenter="displayAnswerSix()" onmouseleave="closeAnswerSix()">
+            <p id="displaySix"></p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script>
+        let questions = [''];
+        let answers = [''];
+
+        function addQuestionOne(){
+            firstQuestion = document.getElementById("questionOne").value;
+            firstAnswer = document.getElementById("answerOne").value;
+
+            questions.push(firstQuestion);
+            answers.push(firstAnswer);
+
+            document.getElementById("displayOne").innerHTML = questions[1];
+
+            document.getElementById("questionOne").value = "";
+            document.getElementById("answerOne").value = "";
+
+            console.log(questions);
+            console.log(answers);
+        }
+
+        function displayAnswerOne(){
+            document.getElementById("displayOne").innerHTML = answers[1];
+        }
+
+        function closeAnswerOne(){
+            document.getElementById("displayOne").innerHTML = questions[1];
+        }
+
+
+        function addQuestionTwo(){
+            secondQuestion = document.getElementById("questionTwo").value;
+            secondAnswer = document.getElementById("answerTwo").value;
+
+            questions.push(secondQuestion);
+            answers.push(secondAnswer);
+
+            document.getElementById("displayTwo").innerHTML = questions[2];
+
+            document.getElementById("questionTwo").value = "";
+            document.getElementById("answerTwo").value = "";
+
+            console.log(questions);
+            console.log(answers);
+        }
+
+        function displayAnswerTwo(){
+            document.getElementById("displayTwo").innerHTML = answers[2];
+        }
+
+        function closeAnswerTwo(){
+            document.getElementById("displayTwo").innerHTML = questions[2];
+        }
+
+
+        function addQuestionThree(){
+            thirdQuestion = document.getElementById("questionThree").value;
+            thirdAnswer = document.getElementById("answerThree").value;
+
+            questions.push(thirdQuestion);
+            answers.push(thirdAnswer);
+
+            document.getElementById("displayThree").innerHTML = questions[3];
+
+            document.getElementById("questionThree").value = "";
+            document.getElementById("answerThree").value = "";
+
+            console.log(questions);
+            console.log(answers);
+        }
+
+        function displayAnswerThree(){
+            document.getElementById("displayThree").innerHTML = answers[3];
+        }
+
+        function closeAnswerThree(){
+            document.getElementById("displayThree").innerHTML = questions[3];
+        }
+
+
+        function addQuestionFour(){
+            fourthQuestion = document.getElementById("questionFour").value;
+            fourthAnswer = document.getElementById("answerFour").value;
+
+            questions.push(fourthQuestion);
+            answers.push(fourthAnswer);
+
+            document.getElementById("displayFour").innerHTML = questions[4];
+
+            document.getElementById("questionFour").value = "";
+            document.getElementById("answerFour").value = "";
+
+            console.log(questions);
+            console.log(answers);
+        }
+
+        function displayAnswerFour(){
+            document.getElementById("displayFour").innerHTML = answers[4];
+        }
+
+        function closeAnswerFour(){
+            document.getElementById("displayFour").innerHTML = questions[4];
+        }
+
+
+        function addQuestionFive(){
+            fifthQuestion = document.getElementById("questionFive").value;
+            fifthAnswer = document.getElementById("answerFive").value;
+
+            questions.push(fifthQuestion);
+            answers.push(fifthAnswer);
+
+            document.getElementById("displayFive").innerHTML = questions[5];
+
+            document.getElementById("questionFive").value = "";
+            document.getElementById("answerFive").value = "";
+
+            console.log(questions);
+            console.log(answers);
+        }
+
+        function displayAnswerFive(){
+            document.getElementById("displayFive").innerHTML = answers[5];
+        }
+
+        function closeAnswerFive(){
+            document.getElementById("displayFive").innerHTML = questions[5];
+        }
+
+
+        function addQuestionSix(){
+            sixthQuestion = document.getElementById("questionSix").value;
+            sixthAnswer = document.getElementById("answerSix").value;
+
+            questions.push(sixthQuestion);
+            answers.push(sixthAnswer);
+
+            document.getElementById("displaySix").innerHTML = questions[6];
+
+            document.getElementById("questionSix").value = "";
+            document.getElementById("answerSix").value = "";
+
+            console.log(questions);
+            console.log(answers);
+        }
+
+        function displayAnswerSix(){
+            document.getElementById("displaySix").innerHTML = answers[6];
+        }
+
+        function closeAnswerSix(){
+            document.getElementById("displaySix").innerHTML = questions[6];
+        }
+    </script>
+</body>
+</html>

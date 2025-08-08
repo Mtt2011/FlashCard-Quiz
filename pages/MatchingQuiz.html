@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashCard-Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../media/WinMyat.png">
+    <style>
+        .container {
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .word {
+            display: inline-block;
+            width: 80px;
+            font-weight: bold;
+        }
+
+        .box {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            border: 2px solid #333;
+            vertical-align: middle;
+            line-height: 40px;
+            text-align: center;
+            user-select: none;
+            margin-left: 10px;
+        }
+
+       
+            .dw {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #0dcaf0;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 10px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .dw:hover {
+            transform: scale(1.05);
+            background-color: #0bb4d8;
+        }
+        
+
+        button {
+            margin-top: 20px;
+            padding: 8px 15px;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+     .card-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            padding: 20px 30px;
+            box-shadow: #2fb7d6;
+            width: 400px;
+            margin: 20px auto;
+     transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: rgb(127, 101, 218);
+        }
+
+        .icon{
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+ <div class="headbar mt-3">
+        <div class="logo">Matching <span>Quiz</span></div>
+        <div class="menu">
+            <ul class="navbar">
+                <li class="nav-item"><a href="C to F.html" class="nav-link">Temperature Converter</a></li>
+                <li class="nav-item ms-3"><a href="Meter to Feet.html" class="nav-link">Meter to Feet</a></li>
+                <li class="nav-item ms-3"><a href="Kg to Lb.html" class="nav-link">Kg to Lb</a></li>
+                <li class="nav-item ms-3"><a href="../index.html" class="nav-link">FlashCard Quiz</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <h2>Match the words by dragging</h2>
+
+       <div class="card-row">
+        <div class="card">
+            <img src="../media/dog.jpg" alt="Dog" class="icon">
+            <span class="word">Dog</span>
+            <div class="box" id="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="card">
+            <img src="../media/cat.jpg" alt="Cat" class="icon">
+            <span class="word">Cat</span>
+            <div class="box" id="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="card">
+            <img src="../media/monkey.jpg" alt="Monkey" class="icon">
+            <span class="word">Monkey</span>
+            <div class="box" id="box3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+    </div>
+
+    <h3>Drag these words</h3>
+    <div>
+        <span draggable="true" id="Dog" class="dw" ondragstart="dragStart(event)">Dog</span>
+        <span draggable="true" id="Cat" class="dw" ondragstart="dragStart(event)">Cat</span>
+        <span draggable="true" id="Monkey" class="dw" ondragstart="dragStart(event)">Monkey</span>
+    </div>
+
+    <button onclick="check()">Submit</button>
+    <p id="result"></p>
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function dragStart(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            let data = event.dataTransfer.getData("text");
+            event.target.textContent = data;
+        }
+
+        function check() {
+            let correct = 0;
+            if (document.getElementById("box1").textContent === "Dog") correct++;
+            if (document.getElementById("box2").textContent === "Cat") correct++;
+            if (document.getElementById("box3").textContent === "Monkey") correct++;
+
+            const result = document.getElementById("result");
+            if (correct === 3) {
+                result.textContent = "All correct!";
+                result.style.color = "green";
+            } else {
+                result.textContent = correct + " / 3 so bad.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
